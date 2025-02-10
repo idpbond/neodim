@@ -2,10 +2,11 @@ FROM debian:bookworm
 
 USER root
 RUN apt-get update \
-    && apt-get install sudo nodejs npm curl wget neovim git lua5.3 bash golang ripgrep ninja-build gettext cmake unzip ruby-full tmux python3 python3-pip -y \
-    && gem install rubygems-update \
-    && update_rubygems \
-    && git clone https://github.com/neovim/neovim.git /usr/local/src/neovim \
+    && apt-get install sudo nodejs npm curl wget neovim git lua5.3 bash golang ripgrep ninja-build gettext cmake unzip ruby-full tmux python3 python3-pip -y
+
+RUN gem install rubygems-update && update_rubygems
+
+RUN git clone https://github.com/neovim/neovim.git /usr/local/src/neovim \
     && cd /usr/local/src/neovim \
     && git checkout stable \
     && make CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX=/usr/local \
