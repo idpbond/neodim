@@ -6,6 +6,7 @@ RUN apt-get update \
 
 RUN gem install rubygems-update && update_rubygems
 
+RUN apt-get install ninja-build gettext cmake curl build-essential -y
 RUN git clone https://github.com/neovim/neovim.git /usr/local/src/neovim \
     && cd /usr/local/src/neovim \
     && git checkout stable \
