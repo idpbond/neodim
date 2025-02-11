@@ -3,8 +3,8 @@ name: Build and Push Docker Image
 on:
   push:
     branches:
-      - main  # or your default branch
-  workflow_dispatch:  # allows manual triggering
+      - main # or your default branch
+  workflow_dispatch: # allows manual triggering
 
 jobs:
   docker:
@@ -32,7 +32,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: ./astronvim.Dockerfile
